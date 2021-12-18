@@ -141,7 +141,7 @@ let textInthis = {
     },
 
     note: "we will leave 2021 soon with a lot of memories that we leave behind we will miss it but time will continue so be excited I know we will meet again in the next year I  promise thank you very much 2021 has given us a lot of happy memories, sad also has given us a lot shock",
-    from: "I'm hiyo daffa wishing you a happy new year",
+    from: "I'm hiyo A.K.A daffa wishing you a happy new year",
     thanks: "also thanks to member of gabutz and all of my friend also my family thank you"
 }
 
@@ -324,7 +324,7 @@ function style() {
             wannaPlayGame = false
         }
     } else {
-        if (rectwidth2 > 30) {
+        if (rectwidth2 >= canvas.width) {
             if (days !== undefined || hours !== undefined || minutes !== undefined || seconds !== undefined) {
                 text(ctx, `SISA: ${days} hari || ${hours} jam || ${minutes} menit || ${seconds} detik`, canvas.width / 2, canvas.height / 4, "RGBA(255, 255, 255, 1)", "kanits", "20", "true")
             }
@@ -471,7 +471,7 @@ function miniGame() {
         }
     }
 
-    if (wannaPlayGame) {
+    if (wannaPlayGame && rectwidth2 < 30) {
         cactus.forEach((CactusParam, index) => {
             CactusParam.uptade(ctx)
 
