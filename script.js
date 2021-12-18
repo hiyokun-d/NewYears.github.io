@@ -141,7 +141,7 @@ let textInthis = {
     },
 
     note: "we will leave 2021 soon with a lot of memories that we leave behind we will miss it but time will continue so be excited I know we will meet again in the next year I  promise thank you very much 2021 has given us a lot of happy memories, sad also has given us a lot shock",
-    from: "I'm hiyo wishing you a happy new year",
+    from: "I'm hiyo daffa wishing you a happy new year",
     thanks: "also thanks to member of gabutz and all of my friend also my family thank you"
 }
 
@@ -247,7 +247,9 @@ function style() {
     } else {
         if (transitionIsComplete) {
             if (rectwidth2 >= canvas.width || rectwidth2 < canvas.width) {
-                rectwidth2 -= 20
+                if (rectwidth2 > 0) {
+                    rectwidth2 -= 20
+                }
             }
         }
     }
@@ -366,34 +368,6 @@ addEventListener("keypress", event => {
 })
 
 
-function run() {
-    setInterval(() => {
-        style()
-    }, frame)
-}
-
-run()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -507,9 +481,8 @@ function miniGame() {
             }
 
             if (RectsColliding(player, CactusParam) && !isDie) {
-                alert("your score congrats " + score)
-                wannaPlayGame = false
-                backToTheLobby = true
+                alert("your score congrats " + score + ` kita bakalan reload halaman ini biar gak ngebug yah`)
+                location.reload()
                 isDie = true;
             }
         })
@@ -557,11 +530,12 @@ addEventListener("keypress", (event) => {
     }
 })
 
-
-function game() {
+function run() {
     spawner()
     setInterval(() => {
+        style()
         miniGame()
     }, frame)
 }
-game()
+
+run()
