@@ -509,6 +509,7 @@ function miniGame() {
             if (RectsColliding(player, CactusParam) && !isDie) {
                 alert("your score congrats " + score)
                 wannaPlayGame = false
+                backToTheLobby = true
                 isDie = true;
             }
         })
