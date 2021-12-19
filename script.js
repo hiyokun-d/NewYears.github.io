@@ -141,7 +141,7 @@ let textInthis = {
     },
 
     note: "we will leave 2021 soon with a lot of memories that we leave behind we will miss it but time will continue so be excited I know we will meet again in the next year I  promise thank you very much 2021 has given us a lot of happy memories, sad also has given us a lot shock",
-    from: "I'm hiyo A.K.A daffa wishing you a happy new year",
+    from: "I'm hiyo A.K.A Daffa wishing you a happy new year",
     thanks: "also thanks to member of gabutz and all of my friend also my family thank you"
 }
 
@@ -187,9 +187,12 @@ let happyNewYear = false
 var countDownDate = new Date("Saturday, January 01, 2022").getTime();
 
 function style() {
+    if (canvas.width !== window_width || canvas.height !== window_height) {
+        location.reload()
+    }
+
     if (canvas.width <= 920 || canvas.height <= 669 && checkWindows) {
         checkWindows = false
-
         alert("pastiin layar anda itu berada di 920 px dan tinggi layar 670 dengan cara inspect dan cari canvas untuk mendapatkan hasil yang maksimal juga makasih atas kerja samanya")
     } else checkWindows = true
 
@@ -224,9 +227,6 @@ function style() {
     }, 1000);
 
     canvas.style.backgroundColor = "rgb(255, 255, 255)"
-    if (canvas.width !== window_width || canvas.height !== canvas.height) {
-        location.reload()
-    }
 
 
 
