@@ -455,7 +455,7 @@ function miniGame() {
         }
     } else if (foundMiniGame && wannaPlayGame) {
         alert("udahan ngegamenya?")
-        if (confirm(text) === true) {
+        if (confirm("mau lanjut ngegame kagak?") === true) {
             alert("oklah kalo masih mau lanjut :)")
             backToTheLobby = false
             foundMiniGame = false
@@ -465,6 +465,7 @@ function miniGame() {
             if (rectwidth2 <= canvas.width) {
                 rectwidth2 += 20
             }
+            score = 0
             foundMiniGame = false
             backToTheLobby = true
             wannaPlayGame = false
