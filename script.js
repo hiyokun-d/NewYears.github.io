@@ -374,6 +374,23 @@ addEventListener("keypress", event => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //!THIS IS DANGER ZONE PLS GET OUT!! THIS IS DANGER ZONE PLS GET OUT!! THIS IS DANGER ZONE PLS GET OUT!! THIS IS DANGER ZONE PLS GET OUT!! THIS IS DANGER ZONE PLS GET OUT!! THIS IS DANGER ZONE PLS GET OUT!! THIS IS DANGER ZONE PLS GET OUT!! THIS IS DANGER ZONE PLS GET OUT!! THIS IS DANGER ZONE PLS GET OUT!
 function RectsColliding(r1, r2) {
     return !(r1.x > r2.x + r2.w ||
@@ -466,6 +483,7 @@ function miniGame() {
                 rectwidth2 += 20
             }
             score = 0
+            cactus.pop()
             foundMiniGame = false
             backToTheLobby = true
             wannaPlayGame = false
