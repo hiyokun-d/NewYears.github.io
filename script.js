@@ -141,7 +141,7 @@ let textInthis = {
     },
 
     note: "we will leave 2021 soon with a lot of memories that we leave behind we will miss it but time will continue so be excited I know we will meet again in the next year I  promise thank you very much 2021 has given us a lot of happy memories, sad also has given us a lot shock",
-    from: "I'm hiyo A.K.A Daffa wishing you a happy new year",
+    from: "I'm hiyo wishing you a happy new year",
     thanks: "also thanks to member of gabutz and all of my friend also my family thank you"
 }
 
@@ -186,14 +186,17 @@ var days
 let happyNewYear = false
 var countDownDate = new Date("Saturday, January 01, 2022").getTime();
 
-function style() {
-    if (canvas.width !== window_width || canvas.height !== window_height) {
-        location.reload()
-    }
+let maxWidth = canvas.width
+let xLayerDown = canvas.height / 2 + 290
+let yLayerDown = canvas.width / 2
 
+let size = 40
+
+let texttransitionY = 2
+
+function style() {
     if (canvas.width <= 920 || canvas.height <= 669 && checkWindows) {
         checkWindows = false
-        alert("pastiin layar anda itu berada di 920 px dan tinggi layar 670 dengan cara inspect dan cari canvas untuk mendapatkan hasil yang maksimal juga makasih atas kerja samanya")
     } else checkWindows = true
 
 
@@ -227,6 +230,9 @@ function style() {
     }, 1000);
 
     canvas.style.backgroundColor = "rgb(255, 255, 255)"
+    if (canvas.width !== window_width || canvas.height !== canvas.height) {
+        location.reload()
+    }
 
 
 
@@ -247,9 +253,7 @@ function style() {
     } else {
         if (transitionIsComplete) {
             if (rectwidth2 >= canvas.width || rectwidth2 < canvas.width) {
-                if (rectwidth2 > 0) {
-                    rectwidth2 -= 20
-                }
+                rectwidth2 -= 20
             }
         }
     }
@@ -259,7 +263,7 @@ function style() {
     // ctx.fillText("Hello World", canvas.width / 2, canvas.height / 2);
 
     if (rectwidth < 0 && rectwidth2 > 30) {
-        if (textX > 2) {
+        if (textX > texttransitionY) {
             textX -= 0.04
         }
 
@@ -303,14 +307,14 @@ function style() {
                 textChangeYears2 -= 4
             }
             text(ctx, textInthis[2022].years, canvas.width / 2, textChangeYears, `RGBA(255, 255, 255 , 1)`, "kanit", 40, true)
-            wrapText(ctx, "SELAMAT TAHUN BARU INDONESIAAAAAAA YEAH ULULULULULLULLULULULLULULULU dah saya mau makan lapar saya bikin beginian ah tidur woy besok sekolah".toUpperCase(), canvas.width / 2, textChangeYears2, 1000, 44, "40", `RGBA(255, 255, 255, ${textOpacity})`, "Open-Sans", true)
+            wrapText(ctx, "SELAMAT TAHUN BARU INDONESIAAAAAAA YEAH ULULULULULLULLULULULLULULULU dah saya mau makan lapar saya bikin beginian ah tidur woy besok sekolah".toUpperCase(), canvas.width / 2, textChangeYears2, 1000, 44, size, `RGBA(255, 255, 255, ${textOpacity})`, "Open-Sans", true)
 
             if (textChangeYears2 <= 100) {
                 if (textChangeYears3 > 10) {
                     textChangeYears3 -= 6
                 }
 
-                wrapText(ctx, "Quotes di tahun ini adalah: 'Try not to become a man of success, but rather try to become a man of value || Genius is 1 % talent and 99 % hard work' - albert einstein".toUpperCase(), canvas.width / 2, canvas.height / 2 + textChangeYears3, 1000, 44, "40", `RGBA(255, 255, 255, ${textOpacity})`, "Open-Sans", true)
+                wrapText(ctx, "Quotes di tahun ini adalah: 'Try not to become a man of success, but rather try to become a man of value || Genius is 1 % talent and 99 % hard work' - albert einstein".toUpperCase(), canvas.width / 2, canvas.height / 2 + textChangeYears3, canvas.width, 44, size, `RGBA(255, 255, 255, ${textOpacity})`, "Open-Sans", true)
             }
         } else {
             drawRect(0, 0, canvas.width, canvas.height, "black")
@@ -318,13 +322,15 @@ function style() {
                 text(ctx, `SISA: ${seconds} detik`, canvas.width / 2, canvas.height / 4, "RGBA(255, 255, 255, 1)", "kanits", "20", true)
             }
             text(ctx, textInthis[2021].years, canvas.width / 2, canvas.height / 2, `RGBA(255, 255, 255 , 1)`, "kanit", 40, true)
-            wrapText(ctx, "okay semuanya kita sebentar lagi akan bergantian tahun apakah yang kalian harapkan? semoga tercapai dan have fun with your family :)", canvas.width / 2, canvas.height / 2 + 60, 1000, 44, "40", `RGBA(255, 255, 255, ${textOpacity})`, "Open-Sans", true)
-            wrapText(ctx, textInthis.thanks, canvas.width / 2, canvas.height / 2 + 190, 1000, 44, "40", `RGBA(255, 255, 255, ${textOpacity})`, "Open-Sans", true)
+            if (checkWindows) {
+                wrapText(ctx, "okay semuanya kita sebentar lagi akan bergantian tahun apakah yang kalian harapkan? semoga tercapai dan have fun with your family :)", canvas.width / 2, canvas.height / 2 + 60, canvas.width, 44, size, `RGBA(255, 255, 255, ${textOpacity})`, "Open-Sans", true)
+                wrapText(ctx, textInthis.thanks, canvas.width / 2, canvas.height / 2 + 190, canvas.width, 44, size, `RGBA(255, 255, 255, ${textOpacity})`, "Open-Sans", true)
+            }
             foundMiniGame = false
             wannaPlayGame = false
         }
     } else {
-        if (rectwidth2 >= canvas.width) {
+        if (rectwidth2 > 30) {
             if (days !== undefined || hours !== undefined || minutes !== undefined || seconds !== undefined) {
                 text(ctx, `SISA: ${days} hari || ${hours} jam || ${minutes} menit || ${seconds} detik`, canvas.width / 2, canvas.height / 4, "RGBA(255, 255, 255, 1)", "kanits", "20", "true")
             }
@@ -336,8 +342,10 @@ function style() {
             text(ctx, textInthis[2021].years, canvas.width / 2, canvas.height / textX, `RGBA(255, 255, 255 ,${Opacity})`, "kanit", 40, true)
 
             if (textX < 2) {
-                wrapText(ctx, simpleText, canvas.width / 2, canvas.height / 2 + 60, 1000, 44, "40", `RGBA(255, 255, 255, ${textOpacity})`, "kanit", true)
-                wrapText(ctx, simpleText2, canvas.width / 2, canvas.height - 50, 1000, 44, "40", `RGBA(255, 255, 255, ${textOpacity})`, "kanit", true)
+                if (checkWindows) {
+                    wrapText(ctx, simpleText, canvas.width / 2, canvas.height / 2 + 60, maxWidth, 44, size, `RGBA(255, 255, 255, ${textOpacity})`, "kanit", true)
+                    wrapText(ctx, simpleText2, yLayerDown, xLayerDown, maxWidth, 44, size, `RGBA(255, 255, 255, ${textOpacity})`, "kanit", true)
+                }
             }
         }
     }
@@ -366,6 +374,17 @@ addEventListener("keypress", event => {
         }
     }
 })
+
+
+function run() {
+    setInterval(() => {
+        style()
+    }, frame)
+}
+
+run()
+
+
 
 
 
@@ -454,7 +473,7 @@ let isDie = false;
 
 function miniGame() {
 
-    
+
     let text = "mau main game gak?"
 
     if (foundMiniGame && !wannaPlayGame) {
@@ -472,7 +491,7 @@ function miniGame() {
         }
     } else if (foundMiniGame && wannaPlayGame) {
         alert("udahan ngegamenya?")
-        if (confirm("mau lanjut ngegame kagak?") === true) {
+        if (confirm(text) === true) {
             alert("oklah kalo masih mau lanjut :)")
             backToTheLobby = false
             foundMiniGame = false
@@ -482,15 +501,13 @@ function miniGame() {
             if (rectwidth2 <= canvas.width) {
                 rectwidth2 += 20
             }
-            score = 0
-            cactus.pop()
             foundMiniGame = false
             backToTheLobby = true
             wannaPlayGame = false
         }
     }
 
-    if (wannaPlayGame && rectwidth2 < 30) {
+    if (wannaPlayGame) {
         cactus.forEach((CactusParam, index) => {
             CactusParam.uptade(ctx)
 
@@ -500,8 +517,8 @@ function miniGame() {
             }
 
             if (RectsColliding(player, CactusParam) && !isDie) {
-                alert("your score congrats " + score + ` kita bakalan reload halaman ini biar gak ngebug yah`)
-                location.reload()
+                alert("your score congrats " + score)
+                wannaPlayGame = false
                 isDie = true;
             }
         })
@@ -549,12 +566,11 @@ addEventListener("keypress", (event) => {
     }
 })
 
-function run() {
+
+function game() {
     spawner()
     setInterval(() => {
-        style()
         miniGame()
     }, frame)
 }
-
-run()
+game()
