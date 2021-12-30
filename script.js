@@ -220,7 +220,7 @@ function style() {
 
         // Time calculations for days, hours, minutes and seconds
         days = Math.floor(distance / (1000 * 60 * 60 * 24)) - 1;
-        hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) + 1;
         minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
